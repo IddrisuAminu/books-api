@@ -1,14 +1,17 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const router=require("./routes/booksRoute")
+const router = require("./routes/booksRoute")
+const logger = require("./middlewares/books.logger")
+const books = require("./books")
+
+
+
 
 dotenv.config();
 const app = express();
 // middlewares
-app.use(logger);
-
 app.use(express.json());
-
+app.use(logger);
 
 
 //route
@@ -28,4 +31,4 @@ app.get("/books", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`server is running on ${PORT}`));
+app.listen(PORT, () => console.log(`server is running on port: ${PORT}`));

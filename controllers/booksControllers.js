@@ -6,4 +6,10 @@ const getBooks = (req, res) => {
     res.status(200).json(books);
 }
 
-module.exports={getBooks}
+
+//delete a book
+const deleteBook = (req, res) => {
+    res.json(books.filter((book)=>book.title!=req.params))
+}
+
+module.exports={getBooks, deleteBook}
